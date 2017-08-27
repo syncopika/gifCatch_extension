@@ -1,0 +1,96 @@
+<!doctype html>
+
+<html>
+  <head>
+	<meta charset='utf-8'>
+    <title> gifCatch options </title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+		text-align: center;
+      }
+	  button{
+		display: block;
+		font-size: 100%;
+		margin: 40px auto;
+		font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+	  }
+	  label{
+		display: inline-block;
+		text-align: right;
+		width: 200px;
+	  }
+	  div:not(:first-of-type){
+		margin-top: 35px;
+	  }
+	  div{
+		width: 450px;
+		margin: 0 auto;
+	  }
+	  #title{
+		margin-top: 0;
+	  }
+	  .info{
+		font-size: 16px;
+		display: none;
+	  }
+	  a{
+		text-decoration: none;
+	  }
+	  h3{
+		margin-bottom: 0;
+	  }
+	  #gifjsCredit{
+		margin: 0;
+		margin-bottom: 50px;
+	  }
+    </style>
+
+  </head>
+  
+  <body>
+	<img src='icon128.png' height='350px' width='350px'></img>
+	<h3 id='title'> gifCatch options </h3>
+	<p id='gifjsCredit'> <a href='https://jnordberg.github.io/gif.js/'>gif.js</a> is used to generate the gifs! </p>
+	
+	<div>
+		<label> number of web workers: </label> <input type='text' id='numWorkers'></input>
+		<p id='workers' class='section'>&#9655; show information</p>
+		<p id='workersInfo' class='info'> This value corresponds to the number of web workers to spawn, which work in the background to create the gif. <br><br>
+		Increasing the number can help speed up the process, but too many workers may result in poor performance. </p>
+	</div>
+	
+	<div>
+		<label> quality of gif: </label> <input type='text' id='quality'></input> 
+		<p id='qual' class='section'>&#9655; show information</p>
+		<p id='qualInfo' class='info'> This value corresponds to the pixel sample interval. <br> The lower the value, the higher the quality. </p>
+	</div>
+	
+	<div>
+		<label> number of frames: </label> <input type='text' id='numFrames'></input>
+		<p id='frames' class='section'>&#9655; show information</p>
+		<p id='framesInfo' class='info'> This value indicates the number of frames to collect. </p> 
+	</div>
+	
+	<div>
+		<label> time between frames (ms) when recording: </label> <input type='text' id='delay'></input>
+		<p id='time' class='section'>&#9655; show information</p>
+		<p id='timeInfo' class='info'> This value indicates the time in milliseconds between frames <b> when recording </b>. </p>
+	</div>
+
+	<div>
+		<label> time between frames (ms) for the gif: </label> <input type='text' id='gifDelay'></input>
+		<p id='gifTime' class='section'>&#9655; show information</p>
+		<p id='gifTimeInfo' class='info'> This value indicates the time in milliseconds between frames <b> for the resulting gif </b>. </p>
+	</div>
+	
+	<button id='save'> save </button>
+	<h3 id='status'></h3>
+	
+  </body>
+
+  <script src='options.js'></script>
+
+</html>
+

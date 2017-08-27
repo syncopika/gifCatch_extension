@@ -1,0 +1,31 @@
+{
+	"manifest_version": 2,
+
+	"name": "gifCatch",
+	"description": "this extension gets a gif of the current page!",
+	"version": "1.0",
+	
+	"options_page": "options.html",
+	
+	"icons": {
+		"128": "icon128.png"
+	},
+
+	"browser_action": {
+		"default_icon": "icon.png"
+	},
+	
+	"background": {
+		"scripts": ["background.js", "gif.worker.js", "gif.js", "content_script.js", "areaSelection.js"],
+		"persistent": false
+	},
+	
+	"permissions": [
+		"activeTab",
+		"tabs",
+		"<all_urls>",
+		"storage",
+		"background"
+	]
+
+}
