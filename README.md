@@ -12,7 +12,7 @@ Here is what the options page looks like (sorry it's so small!). When you update
 A slightly dark layer should cover the viewable area. Pick a point, click, and then drag to create an area that you want to capture. The selected area will become clear as you move your cursor like so (the cursor is not visible here, but should be at the lower right corner of the selected area):    
     
 ![step 2 of gifCatch](/screenshots/step1.png)   
-### step 3: decide whether your selection is ok and wait a few seconds. (note that the video won't pause and wait for you :>)       
+### step 3: decide whether your selection is ok and wait a few seconds.    
 After you select an area, a confirm box will show up so you can decide if you want to redo the selection. If ok, the extension icon will turn green to indicate that the frames for the gif are being collected. When it's done, the green will go away and in a few seconds (generally), the gif should show up in a new tab for you to save if you're satisfied.    
     
 ![step 3 of gifCatch](/screenshots/step2.png)    
