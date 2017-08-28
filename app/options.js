@@ -7,16 +7,16 @@
 ***/
 function save_options(){
 
-	// get num workers, default val = 2
+	// get num workers
 	var workers = parseInt( document.getElementById('numWorkers').value );
 	
-	// get quality, default = 10 
+	// get quality
 	var quality = parseInt( document.getElementById('quality').value );
 	
-	// get num frames, default = 10 
+	// get num frames
 	var frames = parseInt( document.getElementById('numFrames').value );
 	
-	// get time delay between frames when recording, default = 500 ms
+	// get time delay between frames when recording
 	var delay = parseInt( document.getElementById('delay').value );
 	
 	// get time delay between frames for when generating the gif
@@ -41,6 +41,7 @@ function save_options(){
 		var status = document.getElementById('status');
 		status.style.color = '#3ccc3c';
 		status.textContent = "Successfully saved your options!";
+		setTimeout(function(){ status.textContent = '' }, 5000);
 	
 	});	
 }
@@ -92,7 +93,7 @@ function validValues(){
 	display current values for parameters 
 
 ***/
-chrome.storage.sync.get(['numWorkers', 'quality', 'numFrames', 'delay'], function(data){
+chrome.storage.sync.get(['numWorkers', 'quality', 'numFrames', 'delay', 'gifDelay'], function(data){
 		document.getElementById('numWorkers').value = data.numWorkers || 2;
 		document.getElementById('quality').value = data.quality || 10;
 		document.getElementById('numFrames').value = data.numFrames || 10;

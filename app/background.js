@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 	// verify request 
 	if(request.check === 'confirm'){
 		// get data from storage
-		chrome.storage.sync.get(['numWorkers', 'quality', 'numFrames', 'delay'], function(data){
+		chrome.storage.sync.get(['numWorkers', 'quality', 'numFrames', 'delay', 'gifDelay'], function(data){
 			// change icon to indicate in progress
 			chrome.browserAction.setIcon({path: 'icon_green.png'}, function(){
 				// added some default values just in case user does not touch options 
