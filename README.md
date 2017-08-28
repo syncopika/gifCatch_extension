@@ -13,7 +13,9 @@ A slightly dark layer should cover the viewable area. Pick a point, click, and t
     
 ![step 2 of gifCatch](/screenshots/step1.png)   
 ### step 3: decide whether your selection is ok and wait a few seconds.    
-After you select an area, a confirm box will show up so you can decide if you want to redo the selection. If ok, the extension icon will turn green to indicate that the frames for the gif are being collected. When it's done, the green will go away and in a few seconds (generally), the gif should show up in a new tab for you to save if you're satisfied.    
+After you select an area, a confirm box will show up so you can decide if you want to redo the selection. If ok, the extension icon will turn green to indicate that the frames for the gif are being collected.    
+
+The duration in which the icon is green is proportional to how many frames are being collected and the time delay specified between each frame capture. When it's done, the green will go away and in a few seconds (generally), the gif should show up in a new tab for you to save if you're satisfied.    
     
 ![step 3 of gifCatch](/screenshots/step2.png)    
 
