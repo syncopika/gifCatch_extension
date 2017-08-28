@@ -2,6 +2,9 @@
 a gif-capturing Chrome extension. it's fun!    
     
 ## how to use:    
+    
+After downloading, navigate to ```chrome://extensions```, check the Developer mode box, and then click on 'Load unpacked extension...'. Find where the folder gifCatch_extension/app is and select that directory. Then...      
+
 ### step 1: check the options and adjust settings    
 These settings are properties you give to a Gif object, created with the gif.js library. Please visit the [gif.js docs](https://github.com/jnordberg/gif.js/) to learn more about how these settings apply to the gif making process! It may take a bit of experimenting to get the result you want.    
     
