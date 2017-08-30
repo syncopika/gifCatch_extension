@@ -48,7 +48,7 @@ function makeSelection(){
 			selectionLayerContext.fillRect(0, 0, width, height);
 			
 			// set currently selected area to 'selected' color 
-			selectionLayerContext.fillStyle = 'rgba(0, 0, 0, 0.7)';
+			selectionLayerContext.fillStyle = 'rgba(0, 0, 0, 0.6)';
 			selectionLayerContext.fillRect(coords.startX, coords.startY, (currX - coords.startX), (currY - coords.startY));
 		}
 	}
@@ -57,27 +57,17 @@ function makeSelection(){
 	selectionLayer.addEventListener('mouseup', function getLastCorner(e){
 		
 		if(newSelect === 1){
+			
 			coords['endX'] = e.clientX;
 			coords['endY'] = e.clientY;
 			
-			// show selected area
-			selectionLayerContext.fillStyle = 'rgba(0, 0, 0, 0.7)';
-			selectionLayerContext.fillRect(coords.startX, coords.startY, (coords.endX - coords.startX), (coords.endY - coords.startY));
-			
-			// put selected area in new canvas element and show.
-			var newImage = document.createElement('canvas');
-			newImage.setAttribute('width', coords.endX - coords.startX);
-			newImage.setAttribute('height', coords.endY - coords.startY);
-			
-			var newImgContext = newImage.getContext('2d');
-			var selectedImage = selectionLayerContext.getImageData(coords.startX, coords.startY, (coords.endX - coords.startX), (coords.endY - coords.startY));
-			newImgContext.putImageData(selectedImage, 0, 0);
+			// detach the drag event to prevent any accidental overwriting of the last coordinate if moving the mouse quickly after mouseup
+			selectionLayer.removeEventListener('mousemove', onDrag);
 		
 			function check(){
 				if(confirm('Is this selection ok?')){
 					
 					selectionLayer.removeEventListener('mousedown', getFirstCorner);
-					selectionLayer.removeEventListener('mousemove', onDrag);
 					selectionLayer.removeEventListener('mouseup', getLastCorner);
 					
 					// make selection layer clear
@@ -89,6 +79,7 @@ function makeSelection(){
 						coords.startY = 0;
 						coords.endX = document.documentElement.offsetWidth;
 						coords.endY = document.documentElement.offsetHeight;
+						selectionLayerContext.clearRect(coords.startX, coords.startY, (coords.endX - coords.startX), (coords.endY - coords.startY));
 					}
 					
 					// pass data to background script 
@@ -107,6 +98,9 @@ function makeSelection(){
 					}); }, 15);
 				
 				}else{
+					// add the drag event back if redo selection 
+					selectionLayer.addEventListener('mousemove', onDrag);
+					
 					selectionLayerContext.fillStyle = "#99b5d1";
 					selectionLayerContext.fillRect(0, 0, width, height);
 					
@@ -120,7 +114,7 @@ function makeSelection(){
 			}
 			
 			// add delay so that selection area shows up first before prompt 
-			setTimeout(check, 200);	
+			setTimeout(check, 30);	
 		}
 	});
 }
