@@ -88,14 +88,13 @@ function makeSelection(){
 					// delay just a tiny bit so that the canvas selection layer has time to get removed and 
 					// not get caught in the gif (would appear as a slightly darker frame in the gif)
 					setTimeout(function(){ chrome.runtime.sendMessage(coords, function(response){
-						
 						// when response is received, it means that all the frames have been collected
 						if(response.status === 'done'){
 							// remove the selection layer 
 							document.documentElement.removeChild(selectionLayer);
 						}
-						
-					}); }, 15);
+					}); 
+					}, 5);
 				
 				}else{
 					// add the drag event back if redo selection 

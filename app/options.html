@@ -46,6 +46,9 @@
 	  #status{
 		margin-bottom: 15px;
 	  }
+	  .info{
+		font-size: 14px;
+	  }
     </style>
 
   </head>
@@ -59,7 +62,7 @@
 	<div>
 		<label> number of web workers: </label> <input type='text' id='numWorkers'></input>
 		<p id='workers' class='section'>&#9655; show information</p>
-		<p id='workersInfo' class='info'> This value corresponds to the number of web workers to spawn, which work in the background to create the gif. <br><br>
+		<p id='workersInfo' class='info'> This value corresponds to the number of <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers'>web workers</a> to spawn, which work in the background to create the gif. <br><br>
 		Increasing the number can help speed up the process, but too many workers may result in poor performance. </p>
 	</div>
 	
@@ -68,23 +71,15 @@
 		<p id='qual' class='section'>&#9655; show information</p>
 		<p id='qualInfo' class='info'> This value corresponds to the pixel sample interval. <br> The lower the value, the higher the quality. </p>
 	</div>
-	
+
 	<div>
-		<label> number of frames: </label> <input type='text' id='numFrames'></input>
-		<p id='frames' class='section'>&#9655; show information</p>
-		<p id='framesInfo' class='info'> This value indicates the number of frames to collect. </p> 
-	</div>
-	
-	<div>
-		<label> time between frames (ms) when recording: </label> <input type='text' id='delay'></input>
-		<p id='time' class='section'>&#9655; show information</p>
-		<p id='timeInfo' class='info'> This value indicates the time in milliseconds between frames <b> when recording </b>. </p>
+		<label> frame rate (frames/second) for gif: </label> <input type='text' id='frameRate'></input>
+		<p> maximum fps is 20 </p>
 	</div>
 
 	<div>
-		<label> time between frames (ms) for the gif: </label> <input type='text' id='gifDelay'></input>
-		<p id='gifTime' class='section'>&#9655; show information</p>
-		<p id='gifTimeInfo' class='info'> This value indicates the time in milliseconds between frames <b> for the resulting gif </b>. </p>
+		<label> length of gif (in seconds): </label> <input type='text' id='recordTime'></input>
+		<p> maximum is 15 seconds </p>
 	</div>
 	
 	<button id='save'> save </button>

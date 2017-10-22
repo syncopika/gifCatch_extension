@@ -13,15 +13,22 @@ function save_options(){
 	// get quality
 	var quality = parseInt( document.getElementById('quality').value );
 	
-	// get num frames
-	var frames = parseInt( document.getElementById('numFrames').value );
+	// get frame rate (limit to <= 30)
+	var frameRate = parseInt( document.getElementById('frameRate').value );
+	if(frameRate < 1){
+		frameRate = 1;
+	}else if(frameRate > 20){
+		frameRate = 20;
+	}
 	
-	// get time delay between frames when recording
-	var delay = parseInt( document.getElementById('delay').value );
+	// get length to record (limit to max 15 seconds)
+	var recordTime = parseInt( document.getElementById('recordTime').value );
+	if(recordTime > 15){
+		recordTime = 15;
+	}else if(recordTime < 1){
+		recordTime = 1;
+	}
 	
-	// get time delay between frames for when generating the gif
-	var gifDelay = parseInt( document.getElementById('gifDelay').value );
-
 	/***
 		verify valid values here?
 	***/
@@ -31,9 +38,8 @@ function save_options(){
 	
 		'numWorkers': workers,
 		'quality': quality,
-		'numFrames': frames,
-		'delay': delay,
-		'gifDelay': gifDelay
+		'frameRate': frameRate,
+		'recordTime': recordTime
 	
 	}, function(){
 	
@@ -41,7 +47,7 @@ function save_options(){
 		var status = document.getElementById('status');
 		status.style.color = '#3ccc3c';
 		status.textContent = "Successfully saved your options!";
-		setTimeout(function(){ status.textContent = '' }, 5000);
+		setTimeout(function(){ status.textContent = '' }, 3000);
 	
 	});	
 }
@@ -76,7 +82,6 @@ var elements = document.querySelectorAll('.section');
 
 for(var i = 0; i < elements.length; i++){
 	elements[i].addEventListener('click', function(){ displayInfo(this.id) });
-	//elements[i].addEventListener('mouseout', function(){ hideInfo(this.id) });
 }
 
 /***
@@ -93,12 +98,11 @@ function validValues(){
 	display current values for parameters 
 
 ***/
-chrome.storage.sync.get(['numWorkers', 'quality', 'numFrames', 'delay', 'gifDelay'], function(data){
+chrome.storage.sync.get(['numWorkers', 'quality', 'frameRate', 'recordTime'], function(data){
 		document.getElementById('numWorkers').value = data.numWorkers || 2;
 		document.getElementById('quality').value = data.quality || 10;
-		document.getElementById('numFrames').value = data.numFrames || 10;
-		document.getElementById('delay').value = data.delay || 200;
-		document.getElementById('gifDelay').value = data.gifDelay || 200;
+		document.getElementById('frameRate').value = data.frameRate || 5; // default frame rate of 5 frames/sec 
+		document.getElementById('recordTime').value = data.recordTime || 3; // record for 3 seconds
 });
 
 
